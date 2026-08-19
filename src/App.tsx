@@ -1,24 +1,23 @@
-import { APITester } from "./APITester";
-import "./index.css";
+import { Routes, Route} from "react-router";
+import { CreatePost } from "./CreatePost";
+import { FeedPage } from "./FeedPage";
 
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
+interface IPost {
+    id: number;
+    title: string;
+    body: string;
+    tags: string[];
+
+}
 
 export function App() {
-  return (
-    <div className="app">
-      <div className="logo-container">
-        <img src={logo} alt="Bun Logo" className="logo bun-logo" />
-        <img src={reactLogo} alt="React Logo" className="logo react-logo" />
-      </div>
 
-      <h1>Bun + React</h1>
-      <p>
-        Edit <code>src/App.tsx</code> and save to test HMR
-      </p>
-      <APITester />
-    </div>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<FeedPage />} />
+            <Route path="/create" element={<CreatePost />} />
+        </Routes>
+    );
 }
 
 export default App;
