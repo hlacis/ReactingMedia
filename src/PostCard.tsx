@@ -1,17 +1,19 @@
+import {Link} from "react-router";
+
 interface IPost {
-    id: number;
-    title: string;
-    body: string;
-    tags: string[];
+    id: number
+    title: string
+    body: string
+    tags: string[]
 }
 
 interface PostCardProps {
-    post: IPost;
+    post: IPost
 }
 
 export function PostCard({ post }: PostCardProps) {
     return (
-        <div className="post-card">
+        <Link to={`/post/${post.id}`} className="post-card">
             <h2>{post.title}</h2>
             <p>{post.body}</p>
 
@@ -19,7 +21,7 @@ export function PostCard({ post }: PostCardProps) {
                 {post.tags.map(tag => (
                     <span key={tag}>#{tag}</span>
                 ))}
-            </div>
         </div>
-    );
+            </Link>
+    )
 }
