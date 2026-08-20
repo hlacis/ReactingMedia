@@ -4,7 +4,6 @@ import "./index.css";
 import {Link } from "react-router";
 import { useLocation } from "react-router";
 
-
 interface IPost {
     id: number;
     title: string;
@@ -14,6 +13,7 @@ interface IPost {
 
 export function FeedPage() {
     const [posts, setPosts] = useState<IPost[]>([]);
+    const [searchTerm, setSearchTerm] = useState("");
     const location = useLocation();
     useEffect(() => {
         fetch("https://dummyjson.com/posts")
@@ -27,14 +27,30 @@ export function FeedPage() {
             });
     }, []);
 
+    const filteredPosts = posts.filter((post) =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div>
 
             <h1>React(ing) Feed</h1>
             <Link to="/create">Create Post</Link>
-            {posts.map(post => (
+
+            <br />
+            <br />
+
+            <input
+                type="text"
+                placeholder="Search by title..."
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+            />
+
+            {filteredPosts.map(post => (
                 <PostCard key={post.id} post={post} />
             ))}
+
         </div>
     );
 }
