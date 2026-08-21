@@ -1,7 +1,7 @@
 import { Routes, Route} from "react-router";
-import { CreatePost } from "./CreatePost";
-import { FeedPage } from "./FeedPage";
-import {PostDetail} from "./PostDetail";
+import { CreatePost } from "./pages/CreatePost.tsx";
+import { FeedPage } from "./pages/FeedPage.tsx";
+import {PostDetail} from "./pages/PostDetail.tsx";
 
 interface IPost {
     id: number;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { PostCard } from "./PostCard";
-import "./index.css";
+import { PostCard } from "../PostCard.tsx";
+import "../index.css";
 import {Link } from "react-router";
 import { useLocation } from "react-router";
 
